@@ -1,0 +1,19 @@
+/* Shared screen scaffolding. The full-viewport column replaces the prototype's
+   fixed 402×874 frame: it fills the device and pads clear of the notch / home
+   indicator via safe-area insets instead of the old fake 54px/30px. */
+.screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: calc(env(safe-area-inset-top, 0px) + 20px) 0
+    calc(env(safe-area-inset-bottom, 0px) + 20px);
+  box-sizing: border-box;
+}
+
+.labelTiny {
+  font-family: var(--body);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--muted);
+}

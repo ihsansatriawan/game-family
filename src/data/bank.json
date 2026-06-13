@@ -1,0 +1,32 @@
+{
+  "questions": [
+    { "topic": "Hewan", "level": "anak", "q": "Suara \"meong\" dikeluarkan oleh hewan apa?", "a": "Kucing", "explain": "Kucing mengeong untuk berkomunikasi dengan manusia." },
+    { "topic": "Sains", "level": "anak", "q": "Pelangi punya berapa warna?", "a": "7 warna", "explain": "Merah, jingga, kuning, hijau, biru, nila, ungu." },
+    { "topic": "Buah", "level": "anak", "q": "Buah kuning panjang yang disukai monyet?", "a": "Pisang", "explain": "Pisang kaya kalium dan mudah dikupas." },
+    { "topic": "Hewan", "level": "anak", "q": "Hewan apa yang punya belalai panjang?", "a": "Gajah", "explain": "Belalai gajah dipakai untuk minum, makan, dan memegang." },
+    { "topic": "Warna", "level": "anak", "q": "Biru dicampur kuning jadi warna apa?", "a": "Hijau", "explain": "Biru + kuning menghasilkan warna hijau." },
+    { "topic": "Sains", "level": "anak", "q": "Benda di langit yang bersinar di siang hari?", "a": "Matahari", "explain": "Matahari adalah bintang terdekat dengan Bumi." },
+
+    { "topic": "Geografi", "level": "umum", "q": "Apa ibu kota Jepang?", "a": "Tokyo", "explain": "Tokyo adalah kota terpadat di Jepang." },
+    { "topic": "Olahraga", "level": "umum", "q": "Berapa pemain dalam satu tim sepak bola?", "a": "11 pemain", "explain": "Termasuk satu penjaga gawang." },
+    { "topic": "Geografi", "level": "umum", "q": "Di benua apa Mesir berada?", "a": "Afrika", "explain": "Mesir terletak di timur laut benua Afrika." },
+    { "topic": "Sains", "level": "umum", "q": "Gas apa yang kita hirup untuk bernapas?", "a": "Oksigen", "explain": "Oksigen (O₂) dibutuhkan tubuh untuk hidup." },
+    { "topic": "Umum", "level": "umum", "q": "Berapa jumlah hari dalam satu minggu?", "a": "7 hari", "explain": "Senin sampai Minggu." },
+
+    { "topic": "Matematika", "level": "dewasa", "q": "Berapa hasil 7 × 8?", "a": "56", "explain": "7 dikali 8 sama dengan 56." },
+    { "topic": "Matematika", "level": "dewasa", "q": "Berapa 25% dari 200?", "a": "50", "explain": "25% = ¼, dan ¼ dari 200 adalah 50." },
+    { "topic": "Sains", "level": "dewasa", "q": "Planet apa yang paling dekat dengan Matahari?", "a": "Merkurius", "explain": "Merkurius juga planet terkecil di tata surya." },
+    { "topic": "Sejarah", "level": "dewasa", "q": "Tahun berapa Indonesia merdeka?", "a": "1945", "explain": "Proklamasi dibacakan 17 Agustus 1945." },
+    { "topic": "Matematika", "level": "dewasa", "q": "Berapa hasil 144 ÷ 12?", "a": "12", "explain": "12 dikali 12 sama dengan 144." },
+    { "topic": "Sains", "level": "dewasa", "q": "Bagian tumbuhan yang menyerap air dari tanah?", "a": "Akar", "explain": "Akar juga menahan tumbuhan agar tidak roboh." }
+  ],
+  "punishments": [
+    "Wajib merapikan semua piring di meja setelah makan. Semangat, {name}! 🍽️",
+    "Traktir es krim buat satu orang pilihan… atau jadi joki foto seharian! 🍦",
+    "Pesan ke pelayan pakai suara robot. Beep boop, {name}! 🤖",
+    "Tiru gaya hewan favoritmu sampai makanan datang. Action, {name}! 🦁",
+    "Nyanyi \"Selamat Ulang Tahun\" walau tak ada yang ultah. Mic on, {name}! 🎤",
+    "Bilang \"kamu hebat!\" ke semua orang di meja sambil tos. Aww, {name} 🥹",
+    "Jadi fotografer keluarga selama makan. Cekrek terus ya, {name}! 📸"
+  ]
+}

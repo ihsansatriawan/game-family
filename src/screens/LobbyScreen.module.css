@@ -1,0 +1,216 @@
+.header {
+  padding: 4px 24px 14px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--surface);
+  padding: 7px 16px 7px 9px;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  margin-bottom: 12px;
+}
+.badgeEmoji {
+  font-size: 22px;
+}
+.badgeText {
+  font-family: var(--body);
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 42px;
+  color: var(--ink);
+  line-height: 0.98;
+  letter-spacing: -0.5px;
+}
+.subtitle {
+  margin: 8px 0 0;
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.listWrap {
+  flex: 1;
+  min-height: 0;
+  padding: 0 18px;
+  display: flex;
+  flex-direction: column;
+}
+.listHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px 8px;
+}
+.listHeadCount {
+  color: var(--ink);
+}
+.list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--muted);
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 15px;
+  border: 2.5px dashed var(--line);
+  border-radius: 22px;
+  padding: 24px;
+  text-align: center;
+}
+.emptyEmoji {
+  font-size: 34px;
+}
+
+.playerRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 10px 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+.playerInfo {
+  flex: 1;
+  min-width: 0;
+}
+.playerName {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.playerChip {
+  margin-top: 3px;
+}
+.removeBtn {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: var(--wrong-soft);
+  color: var(--wrong-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  padding: 12px 18px 0;
+}
+.formCard {
+  background: var(--surface);
+  border-radius: 22px;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+.nameInput {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: 13px 15px;
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  background: var(--surface2);
+  outline: none;
+}
+
+.avatarPicker {
+  display: flex;
+  gap: 7px;
+  margin-top: 10px;
+  overflow-x: auto;
+  padding: 2px;
+  scroll-snap-type: x proximity;
+}
+.avatarBtn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  scroll-snap-align: start;
+  border-radius: 13px;
+  font-size: 23px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.segmented {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+  background: var(--surface2);
+  border-radius: 14px;
+  padding: 5px;
+}
+.segBtn {
+  flex: 1;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 11px 4px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 15px;
+  transition: background 0.15s;
+}
+.addBtn {
+  border: none;
+  border-radius: 14px;
+  padding: 0 20px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.addBtnPlus {
+  font-size: 22px;
+  margin-top: -2px;
+}
+
+.start {
+  padding: 12px 18px 4px;
+}

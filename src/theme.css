@@ -1,0 +1,154 @@
+/* theme.css — global tokens (Ceria theme) + base reset.
+   Only the "Ceria" palette ships; values are kept as CSS variables so the
+   app can be re-themed later by swapping this block. Text-scale and corner
+   roundness from the prototype are baked to their defaults (1.0 / "Sedang"),
+   so the prototype's calc()-based fs()/rad() helpers collapse to plain px. */
+
+:root {
+  /* Ceria palette */
+  --bg: #fff4e8;
+  --bg2: #ffe7cf;
+  --surface: #ffffff;
+  --surface2: #fff9f2;
+  --ink: #3a2a1f;
+  --muted: #9c8576;
+  --line: #f0e2d2;
+  --primary: #ff7a3d;
+  --primary-ink: #ffffff;
+  --primary-deep: #e85f22;
+  --kid: #2ea7ff;
+  --kid-soft: #e3f2ff;
+  --kid-ink: #0b5c9e;
+  --adult: #6c4be6;
+  --adult-soft: #ece6ff;
+  --adult-ink: #4a2eb0;
+  --correct: #1fb36b;
+  --correct-soft: #e1f7ec;
+  --correct-ink: #0c7a45;
+  --wrong: #ff5a5a;
+  --wrong-soft: #ffe7e7;
+  --wrong-ink: #c42e2e;
+  --punish-bg: #fff0d4;
+  --punish-accent: #ff7a3d;
+  --punish-ink: #7a3b12;
+  --gold: #ffc83d;
+  --silver: #cbd4de;
+  --bronze: #e0996b;
+
+  /* Type families */
+  --display: 'Fredoka', system-ui, sans-serif;
+  --body: 'Nunito', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+input {
+  font-family: inherit;
+}
+
+input::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+/* hide scrollbars but keep scroll */
+.noscroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.noscroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* press feedback on big buttons / tappables */
+.press {
+  transition: transform 0.08s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.press:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pop-in {
+    animation: popIn 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+  }
+  .card-enter {
+    animation: cardEnter 0.3s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+  }
+  .card-reveal {
+    animation: cardReveal 0.4s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+  }
+  .wiggle {
+    animation: wiggle 2.4s ease-in-out 0.4s infinite;
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: translateY(9px) scale(0.96);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes cardEnter {
+  from {
+    transform: translateY(14px) scale(0.975);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes cardReveal {
+  0% {
+    transform: scale(0.97);
+  }
+  60% {
+    transform: scale(1.015);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes wiggle {
+  0%,
+  92%,
+  100% {
+    transform: rotate(0deg);
+  }
+  94% {
+    transform: rotate(-1.2deg);
+  }
+  97% {
+    transform: rotate(1.2deg);
+  }
+}
+@keyframes fall {
+  to {
+    transform: translateY(900px) rotate(640deg);
+    opacity: 0.9;
+  }
+}

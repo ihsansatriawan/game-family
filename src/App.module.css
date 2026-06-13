@@ -1,0 +1,13 @@
+.app {
+  position: relative;
+  width: 100%;
+  /* fill the real device; dvh handles mobile browser chrome */
+  height: 100dvh;
+  margin: 0 auto;
+  /* portrait game — cap width on tablets/desktop so it stays phone-shaped */
+  max-width: 480px;
+  overflow: hidden;
+  color: var(--ink);
+  background: radial-gradient(120% 80% at 50% 0%, var(--bg2) 0%, var(--bg) 55%);
+  -webkit-tap-highlight-color: transparent;
+}
