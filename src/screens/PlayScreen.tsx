@@ -110,9 +110,13 @@ export function PlayScreen({
 
           <div className={`noscroll ${styles.cardBody}`}>
             {!revealed ? (
-              <p className={styles.question}>{question.q}</p>
+              <>
+                <div className={styles.illustration}>{question.emoji}</div>
+                <p className={styles.question}>{question.q}</p>
+              </>
             ) : (
               <div className={styles.revealInner}>
+                <div className={styles.illustration}>{question.emoji}</div>
                 <div className={styles.revealLabel}>✓ JAWABAN BENAR</div>
                 <p className={styles.answer}>{question.a}</p>
                 <p className={styles.explain}>{question.explain}</p>

@@ -18,6 +18,8 @@ export interface Question {
   level: QuestionLevel
   q: string
   a: string
+  /** Emoji illustration relevant to the question/answer. */
+  emoji: string
   explain: string
 }
 
