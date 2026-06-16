@@ -5,4 +5,52 @@
   font-weight: 600;
   letter-spacing: 0.3px;
   line-height: 1.05;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.12s ease,
+    filter 0.12s ease;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: -65% -35%;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.5) 49%,
+    transparent 60%
+  );
+  opacity: 0;
+  transform: translateX(-55%) rotate(8deg);
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .btn:hover:not(:disabled) {
+    filter: brightness(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn:not(:disabled)::after {
+    animation: buttonGleam 3.2s ease-in-out infinite;
+  }
+}
+
+@keyframes buttonGleam {
+  0%,
+  68% {
+    opacity: 0;
+    transform: translateX(-55%) rotate(8deg);
+  }
+  78% {
+    opacity: 0.68;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(55%) rotate(8deg);
+  }
 }

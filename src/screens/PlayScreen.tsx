@@ -37,7 +37,7 @@ export function PlayScreen({
           return (
             <div
               key={p.id}
-              className={styles.scorePill}
+              className={`${styles.scorePill} ${on ? styles.scorePillOn : ''}`}
               style={{
                 background: on ? pk.c : 'var(--surface)',
                 boxShadow: on
@@ -83,21 +83,23 @@ export function PlayScreen({
       {/* question flashcard */}
       <div className={styles.cardWrap}>
         <div
-          className={revealed ? 'card-reveal' : 'card-enter'}
+          className={`${styles.card} ${revealed ? `card-reveal ${styles.cardSolved}` : 'card-enter'}`}
           key={qNumber + (revealed ? 'r' : 'a')}
           style={{
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            borderRadius: 28,
-            padding: '22px 20px',
             background: revealed ? 'var(--correct-soft)' : 'var(--surface)',
             border: revealed ? '3px solid var(--correct)' : '3px solid transparent',
-            boxShadow: '0 14px 30px rgba(0,0,0,0.10)',
-            overflow: 'hidden',
-            minHeight: 0,
           }}
         >
+          {revealed && (
+            <div className={styles.sparkles} aria-hidden="true">
+              <span>✨</span>
+              <span>⭐</span>
+              <span>🎉</span>
+              <span>✨</span>
+              <span>⭐</span>
+            </div>
+          )}
+
           <div className={styles.cardHead}>
             <span
               className={styles.topicChip}
@@ -116,7 +118,9 @@ export function PlayScreen({
               </>
             ) : (
               <div className={styles.revealInner}>
-                <div className={styles.illustration}>{question.emoji}</div>
+                <div className={`${styles.illustration} ${styles.illustrationSolved}`}>
+                  {question.emoji}
+                </div>
                 <div className={styles.revealLabel}>✓ JAWABAN BENAR</div>
                 <p className={styles.answer}>{question.a}</p>
                 <p className={styles.explain}>{question.explain}</p>

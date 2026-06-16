@@ -15,6 +15,7 @@
 }
 .badgeEmoji {
   font-size: 22px;
+  transform-origin: center bottom;
 }
 .badgeText {
   font-family: var(--body);
@@ -94,6 +95,9 @@
   border-radius: 18px;
   padding: 10px 12px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease;
 }
 .playerInfo {
   flex: 1;
@@ -213,4 +217,69 @@
 
 .start {
   padding: 12px 18px 4px;
+}
+
+@media (hover: hover) {
+  .playerRow:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(58, 42, 31, 0.08);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .badge {
+    animation: badgeFloat 2.8s ease-in-out infinite;
+  }
+
+  .badgeEmoji {
+    animation: badgeSteam 1.9s ease-in-out infinite;
+  }
+
+  .title {
+    animation: titlePop 0.42s cubic-bezier(0.16, 0.84, 0.35, 1.2) both;
+  }
+
+  .avatarBtn[style*='opacity: 1'] {
+    animation: avatarSettle 0.22s ease-out both;
+  }
+}
+
+@keyframes badgeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes badgeSteam {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(-5deg) scale(1.08);
+  }
+}
+
+@keyframes titlePop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes avatarSettle {
+  from {
+    transform: scale(0.92);
+  }
+  to {
+    transform: scale(1);
+  }
 }

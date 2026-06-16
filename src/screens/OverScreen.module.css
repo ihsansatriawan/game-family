@@ -9,6 +9,7 @@
   font-size: 36px;
   color: var(--ink);
   letter-spacing: -0.5px;
+  transform-origin: center bottom;
 }
 .subtitle {
   margin: 4px 0 0;
@@ -42,6 +43,7 @@
 .crown {
   font-size: 24px;
   margin-bottom: -2px;
+  transform-origin: center bottom;
 }
 .podiumAvatar {
   border-radius: 18px;
@@ -80,6 +82,7 @@
   padding-top: 8px;
   font-size: 26px;
   box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.08);
+  transform-origin: center bottom;
 }
 
 .rest {
@@ -164,4 +167,69 @@
 
 .restart {
   padding: 12px 18px 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .title {
+    animation: winnerPop 0.48s cubic-bezier(0.16, 0.84, 0.35, 1.18) both;
+  }
+
+  .crown {
+    animation: crownBounce 1.15s ease-in-out 0.35s infinite;
+  }
+
+  .podiumAvatar {
+    animation: avatarWin 0.36s ease-out 0.16s both;
+  }
+
+  .podiumBar {
+    animation: podiumRise 0.54s cubic-bezier(0.16, 0.84, 0.35, 1.08) both;
+  }
+
+  .podiumCol:nth-child(2) .podiumBar {
+    animation-delay: 0.08s;
+  }
+
+  .podiumCol:nth-child(3) .podiumBar {
+    animation-delay: 0.16s;
+  }
+}
+
+@keyframes winnerPop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes crownBounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(7deg);
+  }
+}
+
+@keyframes avatarWin {
+  from {
+    transform: scale(0.78) rotate(-6deg);
+  }
+  to {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes podiumRise {
+  from {
+    transform: scaleY(0.08);
+  }
+  to {
+    transform: scaleY(1);
+  }
 }

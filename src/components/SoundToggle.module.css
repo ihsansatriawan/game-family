@@ -1,0 +1,29 @@
+.btn {
+  position: absolute;
+  right: 12px;
+  z-index: 45;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--ink);
+  box-shadow: 0 6px 18px rgba(58, 42, 31, 0.14);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  backdrop-filter: blur(12px);
+}
+
+.icon {
+  width: 21px;
+  height: 21px;
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    background: var(--surface);
+    transform: translateY(-1px);
+  }
+}

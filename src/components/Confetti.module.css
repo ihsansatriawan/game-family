@@ -11,3 +11,9 @@
   top: -16px;
   border-radius: 2px;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .bit {
+    display: none;
+  }
+}
