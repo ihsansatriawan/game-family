@@ -1,7 +1,6 @@
 import type { Category } from '../types'
 
-// Playful animal/face avatars. Used ones are locked in the picker so no two
-// players share one.
+// Playful animal/face avatars. Players may share an avatar.
 export const AVATARS = [
   '🦊', '🐼', '🐯', '🐰', '🐵', '🦁', '🐸', '🐶', '🐱',
   '🐨', '🐷', '🐥', '🦄', '🐙', '🐢', '🦉', '🐻', '🐲',

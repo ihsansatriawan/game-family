@@ -24,7 +24,7 @@ export function LobbyScreen({ players, addPlayer, removePlayer, startGame }: Lob
   const usedAvatars = players.map((p) => p.avatar)
   const nextFreeAvatar = () => AVATARS.find((a) => !usedAvatars.includes(a)) ?? AVATARS[0]
 
-  // keep selection on a free avatar as players come and go
+  // auto-suggest next free avatar when players change
   useEffect(() => {
     if (usedAvatars.includes(avatar)) setAvatar(nextFreeAvatar())
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,19 +105,18 @@ export function LobbyScreen({ players, addPlayer, removePlayer, startGame }: Lob
           <div className={`noscroll ${styles.avatarPicker}`}>
             {AVATARS.map((a) => {
               const on = a === avatar
-              const used = usedAvatars.includes(a)
+              const inUse = !on && usedAvatars.includes(a)
               return (
                 <button
                   key={a}
                   className={`press ${styles.avatarBtn}`}
-                  onClick={() => !used && setAvatar(a)}
-                  disabled={used && !on}
+                  onClick={() => setAvatar(a)}
                   aria-label={`Avatar ${a}`}
                   style={{
-                    cursor: used ? 'default' : 'pointer',
+                    cursor: 'pointer',
                     border: on ? `2.5px solid ${CAT[cat].c}` : '2.5px solid transparent',
                     background: on ? CAT[cat].soft : 'var(--surface2)',
-                    opacity: used && !on ? 0.28 : 1,
+                    opacity: inUse ? 0.4 : 1,
                   }}
                 >
                   {a}
