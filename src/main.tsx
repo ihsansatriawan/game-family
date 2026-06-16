@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { registerSW } from 'virtual:pwa-register'
 
 // Self-hosted fonts (bundled — no runtime CDN, works offline)
 import '@fontsource/fredoka/400.css'
@@ -13,6 +14,10 @@ import '@fontsource/nunito/900.css'
 
 import './theme.css'
 import App from './App'
+
+registerSW({
+  immediate: true,
+})
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
