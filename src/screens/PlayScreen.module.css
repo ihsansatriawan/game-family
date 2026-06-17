@@ -185,6 +185,10 @@
   text-align: center;
   position: relative;
 }
+.finishedInner {
+  text-align: center;
+  position: relative;
+}
 .revealLabel {
   font-family: var(--body);
   font-weight: 800;
@@ -200,6 +204,25 @@
   line-height: 1.05;
   color: var(--correct-ink);
   text-wrap: balance;
+}
+.finishedTitle {
+  margin: 10px 0 0;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 1.08;
+  color: var(--correct-ink);
+  text-wrap: balance;
+}
+.finishedText {
+  margin: 14px 0 0;
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--ink);
+  opacity: 0.8;
+  text-wrap: pretty;
 }
 .explain {
   margin: 14px 0 0;
@@ -306,6 +329,14 @@
   }
 
   .explain {
+    animation: revealRise 0.36s ease-out 0.2s both;
+  }
+
+  .finishedTitle {
+    animation: revealRise 0.34s ease-out 0.12s both;
+  }
+
+  .finishedText {
     animation: revealRise 0.36s ease-out 0.2s both;
   }
 

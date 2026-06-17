@@ -39,6 +39,7 @@ export interface GameState {
   turn: number
   question: Question | null
   revealed: boolean
+  questionExhausted: boolean
   recentIds: string[]
   punishIdx: number
 }

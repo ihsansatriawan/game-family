@@ -36,13 +36,14 @@ export default function App() {
         />
       )}
 
-      {game.screen === 'play' && game.question && (
+      {game.screen === 'play' && (
         <PlayScreen
           players={game.players}
           current={game.current}
           question={game.question}
           qNumber={game.qNumber}
           revealed={game.revealed}
+          exhausted={game.questionExhausted}
           onReveal={() => {
             sound.play('reveal')
             game.reveal()

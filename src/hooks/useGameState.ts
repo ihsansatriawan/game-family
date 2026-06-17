@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import type { Category, GameState, Player, Question } from '../types'
 import {
   newId,
+  markQuestionUsed,
   pickQuestion,
   pickPunishment,
   punishmentText,
-  pushRecent,
 } from '../lib/game'
 
 import { loadState, saveState } from '../lib/storage'
@@ -22,6 +22,7 @@ export interface GameApi {
   current: Player
   question: Question | null
   revealed: boolean
+  questionExhausted: boolean
   qNumber: number
   addPlayer: (name: string, cat: Category, avatar: string) => void
   removePlayer: (id: string) => void
@@ -41,13 +42,25 @@ export function useGameState(): GameApi {
   const [turn, setTurn] = useState<number>(saved?.turn ?? 0)
   const [question, setQuestion] = useState<Question | null>(saved?.question ?? null)
   const [revealed, setRevealed] = useState<boolean>(saved?.revealed ?? false)
+  const [questionExhausted, setQuestionExhausted] = useState<boolean>(
+    saved?.questionExhausted ?? false,
+  )
   const [recentIds, setRecentIds] = useState<string[]>(saved?.recentIds ?? [])
   const [punishIdx, setPunishIdx] = useState<number>(saved?.punishIdx ?? 0)
 
   // persist on every change
   useEffect(() => {
-    saveState({ screen, players, turn, question, revealed, recentIds, punishIdx })
-  }, [screen, players, turn, question, revealed, recentIds, punishIdx])
+    saveState({
+      screen,
+      players,
+      turn,
+      question,
+      revealed,
+      questionExhausted,
+      recentIds,
+      punishIdx,
+    })
+  }, [screen, players, turn, question, revealed, questionExhausted, recentIds, punishIdx])
 
   const current = players[turn % Math.max(players.length, 1)] ?? players[0]
 
@@ -64,7 +77,8 @@ export function useGameState(): GameApi {
     setRevealed(false)
     const q = pickQuestion(fresh[0], [])
     setQuestion(q)
-    setRecentIds([q.q])
+    setQuestionExhausted(q === null)
+    setRecentIds(q ? [q.q] : [])
     setScreen('play')
   }
 
@@ -77,8 +91,9 @@ export function useGameState(): GameApi {
     const nextTurn = turn + 1
     const nextPlayer = players[nextTurn % players.length]
     const q = pickQuestion(nextPlayer, recentIds)
-    setRecentIds((r) => pushRecent(r, q))
+    setRecentIds((r) => (q ? markQuestionUsed(r, q) : r))
     setQuestion(q)
+    setQuestionExhausted(q === null)
     setRevealed(false)
     setTurn(nextTurn)
   }
@@ -93,6 +108,7 @@ export function useGameState(): GameApi {
     setTurn(0)
     setRevealed(false)
     setQuestion(null)
+    setQuestionExhausted(false)
     setRecentIds([])
     setScreen('lobby')
   }
@@ -110,6 +126,7 @@ export function useGameState(): GameApi {
     current,
     question,
     revealed,
+    questionExhausted,
     qNumber: turn + 1,
     addPlayer,
     removePlayer,

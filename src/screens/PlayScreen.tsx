@@ -7,9 +7,10 @@ import styles from './PlayScreen.module.css'
 interface PlayScreenProps {
   players: Player[]
   current: Player
-  question: Question
+  question: Question | null
   qNumber: number
   revealed: boolean
+  exhausted: boolean
   onReveal: () => void
   onScore: (pts: number) => void
   onEnd: () => void
@@ -21,11 +22,13 @@ export function PlayScreen({
   question,
   qNumber,
   revealed,
+  exhausted,
   onReveal,
   onScore,
   onEnd,
 }: PlayScreenProps) {
   const k = CAT[current.cat]
+  const isExhausted = exhausted || question === null
 
   return (
     <div className={shared.screen}>
@@ -76,7 +79,8 @@ export function PlayScreen({
       {/* turn indicator */}
       <div className={styles.turnWrap}>
         <div className={styles.turnPill} style={{ background: k.soft, color: k.ink }}>
-          <span className={styles.turnEmoji}>👉</span> Giliran: {current.name}
+          <span className={styles.turnEmoji}>{isExhausted ? '🏁' : '👉'}</span>{' '}
+          {isExhausted ? 'Ronde selesai' : `Giliran: ${current.name}`}
         </div>
       </div>
 
@@ -84,13 +88,16 @@ export function PlayScreen({
       <div className={styles.cardWrap}>
         <div
           className={`${styles.card} ${revealed ? `card-reveal ${styles.cardSolved}` : 'card-enter'}`}
-          key={qNumber + (revealed ? 'r' : 'a')}
+          key={isExhausted ? 'exhausted' : qNumber + (revealed ? 'r' : 'a')}
           style={{
-            background: revealed ? 'var(--correct-soft)' : 'var(--surface)',
-            border: revealed ? '3px solid var(--correct)' : '3px solid transparent',
+            background: revealed || isExhausted ? 'var(--correct-soft)' : 'var(--surface)',
+            border:
+              revealed || isExhausted
+                ? '3px solid var(--correct)'
+                : '3px solid transparent',
           }}
         >
-          {revealed && (
+          {(revealed || isExhausted) && (
             <div className={styles.sparkles} aria-hidden="true">
               <span>✨</span>
               <span>⭐</span>
@@ -103,15 +110,29 @@ export function PlayScreen({
           <div className={styles.cardHead}>
             <span
               className={styles.topicChip}
-              style={{ background: revealed ? 'var(--correct)' : k.c }}
+              style={{ background: revealed || isExhausted ? 'var(--correct)' : k.c }}
             >
-              {question.topic.toUpperCase()}
+              {isExhausted ? 'SELESAI' : question.topic.toUpperCase()}
             </span>
-            <span className={styles.soalNum}>Soal #{qNumber}</span>
+            <span className={styles.soalNum}>
+              {isExhausted ? 'Semua soal terpakai' : `Soal #${qNumber}`}
+            </span>
           </div>
 
           <div className={`noscroll ${styles.cardBody}`}>
-            {!revealed ? (
+            {isExhausted ? (
+              <div className={styles.finishedInner}>
+                <div className={`${styles.illustration} ${styles.illustrationSolved}`}>
+                  🎊
+                </div>
+                <div className={styles.revealLabel}>PERTANYAAN HABIS</div>
+                <p className={styles.finishedTitle}>Hebat, semua soal baru sudah dimainkan!</p>
+                <p className={styles.finishedText}>
+                  Tidak ada pertanyaan yang diulang di sesi ini. Ronde bisa
+                  ditutup dulu, lalu mulai lagi nanti dengan semangat baru.
+                </p>
+              </div>
+            ) : !revealed ? (
               <>
                 <div className={styles.illustration}>{question.emoji}</div>
                 <p className={styles.question}>{question.q}</p>
@@ -128,7 +149,7 @@ export function PlayScreen({
             )}
           </div>
 
-          {!revealed && (
+          {!revealed && !isExhausted && (
             <div className={styles.hint}>Baca keras-keras, lalu tebak! 🤔</div>
           )}
         </div>
@@ -136,7 +157,11 @@ export function PlayScreen({
 
       {/* action area */}
       <div className={styles.actions}>
-        {!revealed ? (
+        {isExhausted ? (
+          <BigButton onClick={onEnd} bg="var(--correct)" deep="var(--correct-ink)">
+            🏆&nbsp;&nbsp;Lihat Hasil
+          </BigButton>
+        ) : !revealed ? (
           <BigButton onClick={onReveal} bg="var(--ink)" deep="rgba(0,0,0,0.35)">
             👀&nbsp;&nbsp;Lihat Jawaban
           </BigButton>
@@ -158,11 +183,13 @@ export function PlayScreen({
       </div>
 
       {/* emergency end */}
-      <div className={styles.endWrap}>
-        <button className={`press ${styles.endBtn}`} onClick={onEnd}>
-          🛑 Makanan Datang! (Selesai)
-        </button>
-      </div>
+      {!isExhausted && (
+        <div className={styles.endWrap}>
+          <button className={`press ${styles.endBtn}`} onClick={onEnd}>
+            🛑 Makanan Datang! (Selesai)
+          </button>
+        </div>
+      )}
     </div>
   )
 }

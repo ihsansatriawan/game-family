@@ -8,9 +8,6 @@ export const AVATARS = [
 
 export const POINTS_CORRECT = 10
 
-/** Keep the last N questions out of the pool to avoid quick repeats. */
-export const RECENT_WINDOW = 6
-
 export const STORE_KEY = 'familyTrivia.v1'
 
 interface CatStyle {
